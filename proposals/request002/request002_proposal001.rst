@@ -53,8 +53,7 @@ entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono
 aggiornare l'e-service assicurando la costituzione del trust tramite la Piattaforma 
 Digitale Nazionale Dati per l’interoperabilità.
 
-In quanto segue si declina il presente pattern in assenza della Piattaforma Digitale 
-Nazionale Dati per l’interoperabilità, garantendo la non ripudiabilità del contenuto del JWT, applicato la specifica JWS allo stesso.
+In quanto segue si declina il presente pattern, ricordando che in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, per garantire la non ripudiabilità del contenuto del JWT, il fruitore deve applicare la specifica JWS allo stesso.
 
 
 .. mermaid::
@@ -69,7 +68,7 @@ Nazionale Dati per l’interoperabilità, garantendo la non ripudiabilità del c
     deactivate Fruitore
 
 
-*Figura 8 - Integrità del payload del messaggio*
+*Figura XX - Audit dati tracciati nel dominio del fruitore*
 
 Regole di processamento
 -----------------------
@@ -79,16 +78,16 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 **A: Richiesta**
 
-1. Il fruitore presispone il JWT con i dati tracciati nel proprio dominio, ovvero:
+1. Il fruitore predispone il JWT con i dati tracciati nel proprio dominio, ovvero:
 
    a. il JOSE Header con almeno i parameter:
 
-      i.   alg con l’algoritmo di firma, vedi :rfc:`8725`
+      i.   alg con l’algoritmo di firma, vedi :rfc:`8725` (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità)
 
       ii.  typ uguale a JWT
 
       iii. una o più delle seguenti opzioni per referenziare il
-           certificato X.509:
+           certificato X.509 (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità):
 
            -  :code:`x5u` (X.509 URL)
 
@@ -115,15 +114,15 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
    d. il claim concordati con l'erogatore
 
-2. il fruitore firma il token adottando la JWS Compact Serialization
+2. il fruitore firma il token adottando la JWS Compact Serialization (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità)
 
-3. il fruitore posiziona il JWS nell’header Agid-JWT-TrackingEvidence
+3. il fruitore posiziona il token nell’header Agid-JWT-TrackingEvidence
 
 4. Il fruitore spedisce il messaggio all’erogatore.
 
 **B: Risultato**
 
-5.  L’erogatore decodifica il JWS presente in Agid-JWT-TrackingEvidence header
+5.  L’erogatore decodifica il token presente in Agid-JWT-TrackingEvidence header
     secondo le indicazioni contenute in :rfc:`7515#section-5.2`,
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel Jose Header, in particolare verifica:
@@ -134,17 +133,18 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     g. l’univocità del claim :code:`jti` se presente.
 
-6.  L’erogatore recupera il certificato X.509 referenziato nel JOSE
-    Header
+6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza dell’hash contenuto nel voucher PDND è l’hash del token nell’header Agid-JWT-TrackingEvidence 
+
+7. In assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore:
+    
+    i.	recupera il certificato X.509 referenziato nel JOSE Header
     facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
+    
+    ii. verifica il certificato secondo i criteri del trust
+    
+    iii. valida la firma verificando l’elemento Signature del JWS
 
-7.  L’erogatore verifica il certificato secondo i criteri del trust
-
-8.  L’erogatore valida la firma verificando l’elemento Signature del JWS
-
-9.  Se le azioni da 7 a 8 hanno avuto esito positivo, il messaggio
-    viene elaborato e viene restituito il risultato del servizio
-    richiamato.
+8.  Se le azioni da 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato del servizio richiamato
 
 Note:
 
@@ -155,8 +155,7 @@ Note:
 Esempio
 -------
 
-Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore
-all’interfaccia di servizio dell’erogatore.
+Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore, in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Richiesta HTTP con Digest e representation metadata
 
