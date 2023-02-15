@@ -62,7 +62,7 @@ ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice de
 
 1. Il fruitore costruisce un messaggio di richiesta.
 
-2. Il fruitore spedisce utilizzando il canale sicuro stabilito con il
+2. Il fruitore spedisce utilizzando il canale sicuro stabilito il
    messaggio di richiesta all’interfaccia di servizio dell’erogatore.
 
 **B: Risposta**
