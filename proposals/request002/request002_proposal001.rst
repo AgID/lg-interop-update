@@ -136,14 +136,12 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza dell’hash contenuto nel voucher PDND è l’hash del token nell’header Agid-JWT-TrackingEvidence 
 
 7. In assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore:
+    a.	recupera il certificato X.509 referenziato nel JOSE Header facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
     
-    i.	recupera il certificato X.509 referenziato nel JOSE Header
-    facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
+    b. verifica il certificato secondo i criteri del trust
     
-    ii. verifica il certificato secondo i criteri del trust
+    c. valida la firma verificando l’elemento Signature del JWS
     
-    iii. valida la firma verificando l’elemento Signature del JWS
-
 8.  Se le azioni da 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato del servizio richiamato
 
 Note:
