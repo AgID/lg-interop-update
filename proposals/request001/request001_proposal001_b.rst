@@ -110,21 +110,20 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel JOSE Header, in particolare verifica:
 
-7.  il contenuto dei claim :code:`iat` ed :code:`exp`;
+    a.  il contenuto dei claim :code:`iat` ed :code:`exp`;
 
-8.  la corrispondenza tra se stesso e il claim :code:`aud`;
+    b.  la corrispondenza tra se stesso e il claim :code:`aud`;
 
-9.  L’erogatore recupera il certificato X.509 referenziato nel JOSE
+7.  L’erogatore recupera il certificato X.509 referenziato nel JOSE
     Header
     facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
 
-10. L’erogatore verifica il certificato secondo i criteri del trust
+8. L’erogatore verifica il certificato secondo i criteri del trust
+9. L’erogatore valida la firma verificando l’elemento Signature del JWT
 
-11. L’erogatore valida la firma verificando l’elemento Signature del JWT
+10. L’erogatore garantisce l’accesso al fruitore
 
-12. L’erogatore garantisce l’accesso al fruitore
-
-13. Se le azioni da 6 a 10 hanno avuto esito positivo, il messaggio
+11. Se le azioni da 6 a 10 hanno avuto esito positivo, il messaggio
     viene elaborato e viene restituito il risultato del servizio
     richiamato
 
