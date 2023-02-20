@@ -31,7 +31,7 @@ Esempi di claim che POSSONO essere inclusi nel JWT sono:
 
 - userLocation, un identificativo univoco della postazione interna al dominio del fruitore da cui è avviata l'esigenza della request di accesso all'e-service dell'erogatore;
 
-- LoA, ivello di sicurezza o di garanzia adottato nel processo di autenticazione informatica.
+- LoA, livello di sicurezza o di garanzia adottato nel processo di autenticazione informatica.
 
 
 L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale Nazionale Dati per 
