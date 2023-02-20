@@ -23,11 +23,9 @@ Il presente pattern declina l’utilizzo di:
 
 -  JSON Web Signature (JWS) definita dall’ :rfc:`7515`.
 
-L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore 
-nel proprio dominio richiesti dall'erogatore, individuando i claim da 
-includere nel JWT.
+L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore nel proprio dominio richiesti dall'erogatore, individuando i claim da includere nel JWT che DEVONO essere debitamente descritti dall'erogatore nella documentazione allegata al relativo e-service pubblicato nel Catalogo API della Piattaforma Digitale Nazionale Dati.
 
-I seguenti claim POSSONO essere inclusi nel JWT:
+Esempi di claim che POSSONO essere inclusi nel JWT sono:
 
 - userID, un identificativo univoco dell'utente interno al dominio del fruitore che ha determinato l'esigenza della request di accesso all'e-service dell'erogatore;
 
