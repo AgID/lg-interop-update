@@ -31,7 +31,9 @@ I seguenti claim POSSONO essere inclusi nel JWT:
 
 - userID, un identificativo univoco dell'utente interno al dominio del fruitore che ha determinato l'esigenza della request di accesso all'e-service dell'erogatore;
 
-- userLocation, un identificativo univoco della postazione interna al dominio del fruitore da cui è avviata l'esigenza della request di accesso all'e-service dell'erogatore.
+- userLocation, un identificativo univoco della postazione interna al dominio del fruitore da cui è avviata l'esigenza della request di accesso all'e-service dell'erogatore;
+
+- LoA, ivello di sicurezza o di garanzia adottato nel processo di autenticazione informatica.
 
 
 L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale Nazionale Dati per 
