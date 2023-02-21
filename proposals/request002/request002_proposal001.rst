@@ -45,11 +45,11 @@ Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la n
 
 - il fruitore DEVE calcolare la hash del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
 
-Nell'attuazione dei precedenti passi il Fruitori ha la piena responsabilità:
+Nell'attuazione dei precedenti passi il Fruitori ha la piena responsabilità sulla:
 
-- sulla valorizzazione dei claim inclusi nel JWT;
+- valorizzazione dei claim inclusi nel JWT;
 
-- sull'opacizzazione dei dati tracciati inoltrati alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+- opacizzazione dei dati tracciati inoltrata alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
 al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità
