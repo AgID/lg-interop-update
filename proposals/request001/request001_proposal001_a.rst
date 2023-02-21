@@ -52,6 +52,11 @@ instaurato il canale di trasmissione sicuro.
 Regole di processamento
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+Il canale sicuro tra erogatore e fruitore viene instaurato in mutua
+autenticazione utilizzando il protocollo TLS, 
+secondo quanto indicato nelle Linee Guida sulla sicurezza, emanate dall'Agenzia per l'Italia Digitale 
+ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
+
 **A: Richiesta**
 
 1. Il fruitore costruisce un messaggio di richiesta.
