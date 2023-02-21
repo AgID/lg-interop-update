@@ -39,7 +39,7 @@ l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la cost
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT: 
 
-- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (hash del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
+- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (hash del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, nel rispetto delle specifiche tecniche della stessa piattaforma;
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
@@ -49,9 +49,9 @@ Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la n
 La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
 al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità
 nel solo caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
-entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono
-aggiornare l'e-service assicurando la costituzione del trust tramite la Piattaforma 
-Digitale Nazionale Dati per l’interoperabilità.
+entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono 
+aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite 
+della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 In quanto segue si declina il presente pattern, ricordando che in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, per garantire la non ripudiabilità del contenuto del JWT, il fruitore deve applicare la specifica JWS allo stesso.
 
