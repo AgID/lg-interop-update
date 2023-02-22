@@ -39,7 +39,7 @@ l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la cost
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT: 
 
-- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (digest del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, applicando la funzione hash ed in generale quanto indicato nelle specifiche tecniche della stessa piattaforma;
+- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (digest del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, applicando quanto indicato nelle specifiche tecniche della stessa piattaforma;
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
