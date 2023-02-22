@@ -47,7 +47,7 @@ Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la n
 
 - l'erogatore DEVE calcolare la hash del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
 
-Nell'attuazione dei precedenti passi il Fruitori ha la piena responsabilità sulla:
+Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
 - valorizzazione dei claim inclusi nel JWT;
 
