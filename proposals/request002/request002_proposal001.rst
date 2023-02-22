@@ -39,13 +39,13 @@ l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la cost
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT: 
 
-- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (hash del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, nel rispetto delle specifiche tecniche della stessa piattaforma;
+- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (digest del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, applicando la funzione hash ed in generale quanto indicato nelle specifiche tecniche della stessa piattaforma;
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence il JWT predisposto;
 
-- l'erogatore DEVE calcolare la hash del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
+- l'erogatore DEVE calcolare il digest del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
@@ -140,7 +140,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     g. l’univocità del claim :code:`jti` se presente.
 
-6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza dell’hash contenuto nel voucher PDND è l’hash del token nell’header Agid-JWT-TrackingEvidence 
+6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza del digest contenuto nel voucher PDND è il digest calcolato dal JWT presente nell’header Agid-JWT-TrackingEvidence 
 
 7. In assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore:
     a.	recupera il certificato X.509 referenziato nel JOSE Header facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
@@ -149,7 +149,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     
     c. valida la firma verificando l’elemento Signature del JWS
     
-8.  Se le azioni da 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato del servizio richiamato
+8.  Se l'azioni 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato del servizio richiamato
 
 Note:
 
