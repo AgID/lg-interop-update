@@ -43,7 +43,9 @@ Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la n
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
-- il fruitore DEVE calcolare la hash del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
+- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence il JWT predisposto;
+
+- l'erogatore DEVE calcolare la hash del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
 
 Nell'attuazione dei precedenti passi il Fruitori ha la piena responsabilità sulla:
 
