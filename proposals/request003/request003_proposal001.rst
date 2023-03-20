@@ -12,7 +12,9 @@ Si adottano le indicazione riportate in RFC 7231. Considereremo sempre richieste
 
 Questo pattern non copre quindi Range Requests RFC 7233 o HTTP method PATCH che trasmette una rappresentazione parziale.
 
-Il presente pattern è applicabile solo nel caso in cui fruitore ed erogatore risultano aderenti della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+Il presente pattern DEVE essere applicato nel caso in cui fruitore ed erogatore risultano aderenti della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+
+L'integrità del payload della request del fruitore garantita attraverso l'applicazione del presente pattern è riconosciuta nel perimentro degli aderenti alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Descrizione
 -----------
