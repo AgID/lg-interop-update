@@ -105,6 +105,8 @@ Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
 *Figura XX - Audit dati tracciati nel dominio del fruitore*
 
+<SONO QUI>
+
 Regole di processamento
 -----------------------
 
@@ -144,8 +146,6 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 3. il fruitore posiziona il token nell’header Agid-JWT-TrackingEvidence
 
 4. Il fruitore spedisce il messaggio all’erogatore.
-
-<SONO QUI>
 
 **B: Risultato**
 
