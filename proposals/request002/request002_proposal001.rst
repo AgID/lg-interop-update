@@ -19,10 +19,9 @@ Nazionale Dati per l’interoperabilità di cui al comma 2 dell'articolo
 depositato applicando i profili di emissione dei voucher previsti dalla stessa.
 
 La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
-al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità
-nel solo caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
-entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità. In tal caso il trust è costruito attraverso 
-l'utilizzo di materiale critografico basato su certificati X.509.
+al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità, attraverso l'utilizzo di materiale critografico basato su certificati X.509,
+solo nel caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
+entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 
 Descrizione
