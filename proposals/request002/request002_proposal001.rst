@@ -13,6 +13,17 @@ Si adottano le indicazione riportate in :rfc:`7231`. Considereremo sempre
 richieste e risposte complete, con i metodi standard definiti in RFC
 7231#section-4.
 
+L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale 
+Nazionale Dati per l’interoperabilità di cui al comma 2 dell'articolo 
+50-ter del CAD per la costituzione del trust, tramite il materiale crittografico 
+depositato applicando i profili di emissione dei voucher previsti dalla stessa.
+
+La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
+al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità
+nel solo caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
+entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità. In tal caso il trust è costruito attraverso 
+l'utilizzo di materiale critografico basato su certificati X.509.
+
 
 Descrizione
 -----------
@@ -23,7 +34,7 @@ Il presente pattern declina l’utilizzo di:
 
 -  JSON Web Signature (JWS) definita dall’ :rfc:`7515`.
 
-L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore nel proprio dominio richiesti dall'erogatore, individuando i claim da includere nel JWT che DEVONO essere debitamente descritti dall'erogatore nella documentazione allegata al relativo e-service pubblicato nel Catalogo API della Piattaforma Digitale Nazionale Dati.
+L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore nel proprio dominio richiesti dall'erogatore, individuando i claim da includere nel JWT che, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVONO essere debitamente descritti dall'erogatore nella documentazione allegata al relativo e-service pubblicato nel Catalogo API della Piattaforma Digitale Nazionale Dati interoperabilità.
 
 Esempi di claim che POSSONO essere inclusi nel JWT sono:
 
@@ -33,34 +44,51 @@ Esempi di claim che POSSONO essere inclusi nel JWT sono:
 
 - LoA, livello di sicurezza o di garanzia adottato nel processo di autenticazione informatica.
 
+Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT: 
+
+- "cnone" con un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso JWT;
+
+- "aud" il riferimento all'e-service dell’erogatore
+
+- "iss" l'id del client utilizzato dal fruitore
+
+e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE ascicurare il popolamaneto del claim del JWT:  
+
+- "purposeId" l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità.
+
+Di seguito è descritta l'applicazione del presente pattern nel caso in cui il trust tra fruitore ed erogato è realizzato:
+
+- per il tramite della Piattaforma Digitale Nazionale Dati interoperabilità e claim del JWT (TRUST GESTITO DA PDND);
+
+- nel caso in cui il fruitore non può accreditarsi alla Piattaforma Digitale Nazionale Dati interoperabilità (TRUST DIRETTO FRUITORE - EROGATORE).
+
+
+TRUST GESTITO DA PDND
+---------------------
 
 L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale Nazionale Dati per 
 l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la costituzione del trust, 
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT: 
 
-- il fruitore DEVE predisporre la rappresentazione opaca dei dati tracciati (digest del JWT) ed inserirli nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, applicando quanto indicato nelle specifiche tecniche della stessa piattaforma;
+- il fruitore, applicando quanto indicato nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità, DEVE: 
+
+1. predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS Audit);
+
+2. predisporre la rappresentazione opaca dei dati tracciati e firmati (digest del JWS Audit) ed inserirla nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
-- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence il JWT predisposto;
+- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione opaca dei dati tracciati e firmati (JWS Audit);
 
-- l'erogatore DEVE calcolare il digest del JWT ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token.
+- l'erogatore DEVE calcolare il digest della rappresentazione opaca dei dati tracciati e firmati (digest JWS Audit calculate) ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token (digest JWS Audit calculate = digest JWS Audit).
+
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
-- valorizzazione dei claim inclusi nel JWT;
+- valorizzazione dei claim inclusi nel JWS;
 
 - opacizzazione dei dati tracciati inoltrata alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
-
-La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
-al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità
-nel solo caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
-entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono 
-aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite 
-della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
-
-In quanto segue si declina il presente pattern, ricordando che in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, per garantire la non ripudiabilità del contenuto del JWT, il fruitore deve applicare la specifica JWS allo stesso.
 
 
 .. mermaid::
@@ -85,7 +113,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 **A: Richiesta**
 
-1. Il fruitore predispone il JWT con i dati tracciati nel proprio dominio, ovvero:
+1. Il fruitore predispone il JWS con i dati tracciati nel proprio dominio, ovvero:
 
    a. il JOSE Header con almeno i parameter:
 
@@ -93,14 +121,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
       ii.  typ uguale a JWT
 
-      iii. una o più delle seguenti opzioni per referenziare il
-           certificato X.509 (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità):
-
-           -  :code:`x5u` (X.509 URL)
-
-           -  :code:`x5c` (X.509 Certificate Chain)
-
-           -  :code:`x5t#S256` (X.509 Certificate SHA-256 Thumbprint)
+      iii. kid uguale alla chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request
 
    b. i seguenti claim obbligatori:
 
@@ -109,23 +130,22 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
           del token, si può usare il claim :code:`nbf`.
 
       v.  il riferimento dell’erogatore in :code:`aud`;
+	  
+	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
+	  
+	  vii.  l'id del client utilizzato dal fruitore in :code:`iss`;
 
-   c. i seguenti claim, secondo la logica del servizio:
+      viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
 
-      vi.   :code:`sub`: oggetto (principal see :rfc:`3744#section-2`) dei claim
-            contenuti nel jwt
+   c. il claim concordati con l'erogatore;
 
-      vii.  :code:`iss`: identificativo del mittente
-
-      viii. :code:`jti`: identificativo del JWT, per evitare replay attack
-
-   d. il claim concordati con l'erogatore
-
-2. il fruitore firma il token adottando la JWS Compact Serialization (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità)
+2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità;
 
 3. il fruitore posiziona il token nell’header Agid-JWT-TrackingEvidence
 
 4. Il fruitore spedisce il messaggio all’erogatore.
+
+<SONO QUI>
 
 **B: Risultato**
 
@@ -140,7 +160,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     g. l’univocità del claim :code:`jti` se presente.
 
-6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza del digest contenuto nel voucher PDND è il digest calcolato dal JWT presente nell’header Agid-JWT-TrackingEvidence 
+6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza del digest contenuto nel voucher della Piattaforma Digitale Nazionale Dati per l'interoperabilità è il digest calcolato dal JWT presente nell’header Agid-JWT-TrackingEvidence 
 
 7. In assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore:
     a.	recupera il certificato X.509 referenziato nel JOSE Header facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
@@ -197,8 +217,9 @@ Porzione JWS con campi protetti dalla firma
      "userLocation": "station012"
    }
 
-Le parti, in base alle proprie esigenze, individuano gli specifici algoritmi
-secondo quanto indicato nelle Linee Guida sulla sicurezza,
-emanate dall'Agenzia per l'Italia Digitale ai sensi dell'articolo 71
-del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
+
+TRUST DIRETTO FRUITORE - EROGATORE
+----------------------------------
+
+<TOBE>
 

@@ -22,8 +22,7 @@ solo nell'ipotesi in cui il fruitore non possa accreditarsi alla Piattaforma Dig
 Nazionale Dati per l’interoperabilità di cui al comma 2 dell'articolo 
 50-ter del CAD.
 
-Nel ricordare che l'applicazione del presente pattern è ammessa solo nel caso in cui il fruitore non possa accreditarsi alla Piattaforma Digitale 
-Nazionale Dati per l’interoperabilità, si evidenza che entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+Nel ricordare che l'applicazione del presente pattern è ammessa solo nel caso in cui il fruitore non possa accreditarsi alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, si evidenza che entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Descrizione
 ^^^^^^^^^^^

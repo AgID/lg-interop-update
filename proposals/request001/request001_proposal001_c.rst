@@ -33,8 +33,7 @@ nel solo caso in cui il fruitore non possa accreditarsi alla stessa e comunque
 entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità. In tal caso il trust è costruito attraverso 
 l'utilizzo di materiale critografico basato su certificati X.509.
 
-In quanto segue si declina il presente pattern in assenza della Piattaforma Digitale 
-Nazionale Dati per l’interoperabilità.
+, rimando alle "Linee Guida sull’infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l’interoperabilità dei sistemi informativi e delle basi di dati" adottate ai sensi dell’articolo 50-ter, comma 2 del CAD l'esplicitazione delle modalità da applicare in presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Il fruitore inoltra un messaggio all’erogatore includendo o
 referenziando il certificato X.509 e una porzione significativa del
