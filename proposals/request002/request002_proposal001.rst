@@ -79,9 +79,11 @@ Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la n
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
 
-- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione opaca dei dati tracciati e firmati (JWS Audit);
+- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS Audit);
 
-- l'erogatore DEVE calcolare il digest della rappresentazione opaca dei dati tracciati e firmati (digest JWS Audit calculate) ricevuto nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token (digest JWS Audit calculate = digest JWS Audit).
+- l'ergatore DEVE verificare la firma del JWS ricevuto nell'header Agid-JWT-TrackingEvidence
+
+- l'erogatore DEVE calcolare il digest della rappresentazione dei dati tracciati e firmati (digest JWS Audit in Agid-JWT-TrackingEvidence) ricevuti nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token ( digest(JWS Audit in Agid-JWT-TrackingEvidence) = digest JWS Audit in Access Token PDND).
 
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della:
