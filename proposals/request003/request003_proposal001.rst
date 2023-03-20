@@ -14,7 +14,7 @@ Questo pattern non copre quindi Range Requests RFC 7233 o HTTP method PATCH che 
 
 Il presente pattern DEVE essere applicato nel caso in cui fruitore ed erogatore risultano aderenti della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
-L'integrità del payload della request del fruitore garantita attraverso l'applicazione del presente pattern è riconosciuta nel perimentro degli aderenti alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+L'integrità del payload della request del Fruitore garantita attraverso l'applicazione del presente pattern è riconosciuta nel perimetro degli aderenti alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Descrizione
 -----------
