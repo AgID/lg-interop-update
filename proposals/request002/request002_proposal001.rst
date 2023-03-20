@@ -46,7 +46,7 @@ Esempi di claim che POSSONO essere inclusi nel JWT sono:
 
 Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT: 
 
-- "cnone" con un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso JWT;
+- "dnonce" con un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso JWT;
 
 - "aud" il riferimento all'e-service dell’erogatore
 
