@@ -58,7 +58,7 @@ e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità pe
 
 Di seguito è descritta l'applicazione del presente pattern nel caso in cui il trust tra fruitore ed erogato è realizzato:
 
-- per il tramite della Piattaforma Digitale Nazionale Dati interoperabilità e claim del JWT (TRUST GESTITO DA PDND);
+- per il tramite della Piattaforma Digitale Nazionale Dati interoperabilità (TRUST GESTITO DA PDND);
 
 - nel caso in cui il fruitore non può accreditarsi alla Piattaforma Digitale Nazionale Dati interoperabilità (TRUST DIRETTO FRUITORE - EROGATORE).
 
