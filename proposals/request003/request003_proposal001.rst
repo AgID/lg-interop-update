@@ -14,7 +14,7 @@ Questo pattern non copre quindi Range Requests RFC 7233 o HTTP method PATCH che 
 
 Il presente pattern DEVE essere applicato nel caso in cui fruitore ed erogatore risultano aderenti della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
-L'integrità del payload della request del Fruitore garantita attraverso l'applicazione del presente pattern è riconosciuta nel perimetro degli aderenti alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+L'integrità del payload della request del Fruitore, garantita attraverso l'applicazione del presente pattern, è riconosciuta nel perimetro degli aderenti alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Descrizione
 -----------
@@ -30,7 +30,7 @@ Il presente profilo propone l’utilizzo di:
 
 -  JSON Web Signature (JWS) definita dall’ :rfc:`7515`.
 
-Si assume che il trust tra fruitore ed erogatore è costruito per il tramite di Piattaforma Digitale Nazionale Dati per l’interoperabilità che rende disponibile il materiale crittografico, nello specifico la/e chiave/i pubblica dichiarata dal fruitore relativamente al client da esso utilizzato per invocare l'e-service dell'erogatore.
+Si assume che il trust tra fruitore ed erogatore è costruito per il tramite di Piattaforma Digitale Nazionale Dati per l’interoperabilità che rende disponibile il materiale crittografico, nello specifico la/e chiave/i pubblica/he dichiarata/e dal fruitore relativamente al client da esso utilizzato per invocare l'e-service dell'erogatore.
 
 .. mermaid::
 
