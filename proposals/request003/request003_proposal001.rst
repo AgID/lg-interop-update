@@ -121,7 +121,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     g. l’univocità del claim :code:`jti` se presente.
 
-9.  L’erogatore recupera da Piattaforma Digitale Nazionale Dati per l’interoperabilità la chiave pubblica indicata dal fruitore nel claim kid dell'JOSE Header  
+9.  L’erogatore recupera dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità la chiave pubblica indicata dal fruitore nel claim kid del JOSE Header  
 
 10. L’erogatore valida la firma verificando l’elemento Signature del JWS
 
