@@ -74,7 +74,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
       ii.  typ uguale a JWT
 
-      iii. kid uguale alla chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request 
+      iii. kid uguale all'identificativo della chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request 
 
    b. i seguenti claim obbligatori:
 
