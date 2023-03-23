@@ -33,33 +33,34 @@ Il presente pattern declina l’utilizzo di:
 
 -  JSON Web Signature (JWS) definita dall’ :rfc:`7515`.
 
-L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore nel proprio dominio richiesti dall'erogatore, individuando i claim da includere nel JWT che, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVONO essere debitamente descritti dall'erogatore nella documentazione allegata al relativo e-service pubblicato nel Catalogo API della Piattaforma Digitale Nazionale Dati interoperabilità.
+L'erogatore e il fruitore DEVONO concordare i dati tracciati dal fruitore nel proprio dominio richiesti dall'erogatore, individuando i claim da includere nel JWT di audit che, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVONO essere debitamente descritti dall'erogatore nella documentazione allegata al relativo e-service pubblicato nel Catalogo API della Piattaforma Digitale Nazionale Dati interoperabilità.
 
-Esempi di claim che POSSONO essere inclusi nel JWT sono:
+Esempi di claim che POSSONO essere inclusi nel JWT di audit sono:
 
 - userID, un identificativo univoco dell'utente interno al dominio del fruitore che ha determinato l'esigenza della request di accesso all'e-service dell'erogatore;
 
 - userLocation, un identificativo univoco della postazione interna al dominio del fruitore da cui è avviata l'esigenza della request di accesso all'e-service dell'erogatore;
 
-- LoA, livello di sicurezza o di garanzia adottato nel processo di autenticazione informatica.
+- LoA, livello di sicurezza o di garanzia adottato nel processo di autenticazione informatica nel dominio del fruitore.
 
-Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT: 
+Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT di audit: 
 
-- "dnonce" con un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso JWT;
+- "dnonce" un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso;
 
-- "aud" il riferimento all'e-service dell’erogatore
+- "aud" il riferimento all'e-service dell’erogatore;
 
-- "iss" l'id del client utilizzato dal fruitore
+- "iss" il riferimento del fruitore o del client utilizzato per la richiesta dell'e-service;
 
-e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE ascicurare il popolamaneto del claim del JWT:  
+e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE ascicurare il popolamaneto del seguente claim del JWT di audit:  
 
-- "purposeId" l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità.
+- "purposeId" l'id della finalità registrata dal fruitore sulla Piattaforma Digitale Nazionale Dati interoperabilità in relazione alla richiesta di fruizione dell'e-service.
 
-Di seguito è descritta l'applicazione del presente pattern nel caso in cui il trust tra fruitore ed erogato è realizzato:
+
+Di seguito è descritta l'applicazione del presente pattern nei due scenari in cui il trust tra fruitore ed erogato è realizzato:
 
 - per il tramite della Piattaforma Digitale Nazionale Dati interoperabilità (TRUST GESTITO DA PDND);
 
-- nel caso in cui il fruitore non può accreditarsi alla Piattaforma Digitale Nazionale Dati interoperabilità (TRUST DIRETTO FRUITORE - EROGATORE).
+- al di fuori della Piattaforma Digitale Nazionale Dati interoperabilità (TRUST DIRETTO FRUITORE - EROGATORE).
 
 
 TRUST GESTITO DA PDND
@@ -68,26 +69,26 @@ TRUST GESTITO DA PDND
 L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale Nazionale Dati per 
 l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la costituzione del trust, 
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
-Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT: 
+Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT di audit: 
 
 - il fruitore, applicando quanto indicato nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità, DEVE: 
 
-1. predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS Audit);
+1. predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit);
 
-2. predisporre la rappresentazione opaca dei dati tracciati e firmati (digest del JWS Audit) ed inserirla nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
+2. predisporre la rappresentazione opaca dei dati tracciati e firmati (digest del JWS di audit) ed inserirla nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
 
-- la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati nell'Access Token prodotto;
+- la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati(digest del JWS di audit) nell'Access Token, ovvero il Voucher rilasciato al fruitore;
 
-- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS Audit);
+- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
-- l'ergatore DEVE verificare la firma del JWS ricevuto nell'header Agid-JWT-TrackingEvidence
+- l'ergatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando la chiave pubblica recuperata dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
 
-- l'erogatore DEVE calcolare il digest della rappresentazione dei dati tracciati e firmati (digest JWS Audit in Agid-JWT-TrackingEvidence) ricevuti nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token ( digest(JWS Audit in Agid-JWT-TrackingEvidence) = digest JWS Audit in Access Token PDND).
+- l'erogatore DEVE calcolare il digest della rappresentazione dei dati tracciati e firmati (JWS di Audit) ricevuti nell’header Agid-JWT-TrackingEvidence e verificarne la corrispondenza con quanto presente nell'Access Token (digest JWS di Audit).
 
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
-- valorizzazione dei claim inclusi nel JWS;
+- valorizzazione dei claim inclusi nel JWS di audit;
 
 - opacizzazione dei dati tracciati inoltrata alla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
@@ -106,8 +107,6 @@ Nell'attuazione dei precedenti passi il fruitore è responsabile della:
 
 *Figura XX - Audit dati tracciati nel dominio del fruitore*
 
-<SONO QUI>
-
 Regole di processamento
 -----------------------
 
@@ -120,11 +119,11 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
    a. il JOSE Header con almeno i parameter:
 
-      i.   alg con l’algoritmo di firma, vedi :rfc:`8725` (solo in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità)
+      i.   alg con l’algoritmo di firma, vedi :rfc:`8725`
 
       ii.  typ uguale a JWT
 
-      iii. kid uguale alla chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request
+      iii. kid uguale all'identificativo della chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request
 
    b. i seguenti claim obbligatori:
 
@@ -136,21 +135,25 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 	  
 	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
 	  
-	  vii.  l'id del client utilizzato dal fruitore in :code:`iss`;
+	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
 
       viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
 
    c. il claim concordati con l'erogatore;
 
-2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità;
+2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità al client utilizzato per la richiesta
 
-3. il fruitore posiziona il token nell’header Agid-JWT-TrackingEvidence
+3. il fruitore calcola il digest del JWS di audit e lo aggiunge alla richiesta del Voucher secondo le modalità indicate nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
-4. Il fruitore spedisce il messaggio all’erogatore.
+4. il fruitore posiziona il Voucher nell'header Autorization e il JWS di audit nell’header Agid-JWT-TrackingEvidence. 
+
+5. Il fruitore spedisce il messaggio all’erogatore.
 
 **B: Risultato**
 
-5.  L’erogatore decodifica il token presente in Agid-JWT-TrackingEvidence header
+6. L'erogatore verifica il Voucher secondo le modalità indicate nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+
+7.  L’erogatore decodifica il JWS di audit presente in Agid-JWT-TrackingEvidence header
     secondo le indicazioni contenute in :rfc:`7515#section-5.2`,
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel Jose Header, in particolare verifica:
@@ -160,17 +163,13 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     f. la corrispondenza tra se stesso e il claim :code:`aud`;
 
     g. l’univocità del claim :code:`jti` se presente.
+    
+      
+8.  l’erogatore verifica la corrispondenza del digest contenuto nel Voucher della Piattaforma Digitale Nazionale Dati per l'interoperabilità è il digest calcolato dal JWS di audit presente nell’header Agid-JWT-TrackingEvidence 
 
-6.  In presenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore verifica la corrispondenza del digest contenuto nel voucher della Piattaforma Digitale Nazionale Dati per l'interoperabilità è il digest calcolato dal JWT presente nell’header Agid-JWT-TrackingEvidence 
-
-7. In assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità, l’erogatore:
-    a.	recupera il certificato X.509 referenziato nel JOSE Header facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
+9. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
     
-    b. verifica il certificato secondo i criteri del trust
-    
-    c. valida la firma verificando l’elemento Signature del JWS
-    
-8.  Se l'azioni 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato del servizio richiamato
+10.  Se l'azioni 6 o 9 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
 Note:
 
@@ -181,14 +180,14 @@ Note:
 Esempio
 -------
 
-Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore, in assenza della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
-
+Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore.
 Richiesta HTTP con Digest e representation metadata
 
 .. code-block:: http
 
    POST https://api.erogatore.example/rest/service/v1/hello/echo/ HTTP/1.1
    Accept: application/json
+   Autorization: Bearer AftgSSDGciFEEOiJfsI1NfsdfsdfiIsInR5c.vfd5...
    Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...
    Digest: SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=
    Content-Type: application/json
@@ -203,9 +202,7 @@ Porzione JWS con campi protetti dalla firma
    {
      "alg": "ES256",
      "typ": "JWT",
-     "x5c": [
-  	   "MIICyzCCAbOgAwIBAgIEC..."
-     ]
+     "kid": "199d08d2-9971-4979-a78d-e6f7a544f296"
    }
    # *payload*
    
@@ -216,6 +213,7 @@ Porzione JWS con campi protetti dalla firma
      "exp": 1516239024,
      "userID": "user293",
      "userLocation": "station012"
+     "purposeId": 8342462387
    }
 
 
