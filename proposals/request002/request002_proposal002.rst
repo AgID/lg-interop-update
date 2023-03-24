@@ -1,13 +1,14 @@
 **state**: inWorking
 
 
-[AUDIT_REST_01] Inoltro dati tracciati nel dominio del Fruitore REST 
-=====================================================================
+[AUDIT_REST_01] Inoltro dati tracciati nel dominio del Fruitore REST con correlazione
+=====================================================================================
 
 Il presente pattern aggiunge alla comunicazione tra fruitore ed erogatore 
 a livello di messaggio:
 
--  la capacità del fruitore di inoltrare i dati tracciati nel proprio dominio richiesti dall'erogatore.
+-  la capacità del fruitore di inoltrare i dati tracciati nel proprio dominio richiesti dall'erogatore;
+- la correlazione tra gli strumenti di autenticazione e i dati tracciati nel proprio dominio e inoltrati dal fruitore.
 
 Si adottano le indicazione riportate in :rfc:`7231`. Considereremo sempre
 richieste e risposte complete, con i metodi standard definiti in RFC
@@ -17,11 +18,6 @@ L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale
 Nazionale Dati per l’interoperabilità di cui al comma 2 dell'articolo 
 50-ter del CAD per la costituzione del trust, tramite il materiale crittografico 
 depositato applicando i profili di emissione dei voucher previsti dalla stessa.
-
-La costituzione del trust tra fruitore ed erogatore PUÒ essere realizzata
-al di fuori della Piattaforma Digitale Nazionale Dati per l’interoperabilità, attraverso l'utilizzo di materiale critografico basato su certificati X.509,
-solo nel caso in cui il fruitore non possa accreditarsi alla stessa e comunque 
-entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore devono aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 
 Descrizione
@@ -51,20 +47,7 @@ Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT di 
 
 - "iss" il riferimento del fruitore o del client utilizzato per la richiesta dell'e-service;
 
-e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE ascicurare il popolamaneto del seguente claim del JWT di audit:  
-
 - "purposeId" l'id della finalità registrata dal fruitore sulla Piattaforma Digitale Nazionale Dati interoperabilità in relazione alla richiesta di fruizione dell'e-service.
-
-
-Di seguito è descritta l'applicazione del presente pattern nei due scenari in cui il trust tra fruitore ed erogato è realizzato:
-
-- per il tramite della Piattaforma Digitale Nazionale Dati interoperabilità (TRUST GESTITO DA PDND);
-
-- al di fuori della Piattaforma Digitale Nazionale Dati interoperabilità (TRUST DIRETTO FRUITORE - EROGATORE).
-
-
-TRUST GESTITO DA PDND
----------------------
 
 L'erogatore e il fruitore DEVONO utilizzare la Piattaforma Digitale Nazionale Dati per 
 l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la costituzione del trust, 
@@ -216,9 +199,4 @@ Porzione JWS con campi protetti dalla firma
      "purposeId": 8342462387
    }
 
-
-TRUST DIRETTO FRUITORE - EROGATORE
-----------------------------------
-
-<TOBE>
 
