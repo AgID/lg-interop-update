@@ -1,7 +1,7 @@
 **state**: inWorking
 
 
-[AUDIT_REST_01] Inoltro dati tracciati nel dominio del Fruitore REST con correlazione
+[AUDIT_REST_02] Inoltro dati tracciati nel dominio del Fruitore REST con correlazione
 =====================================================================================
 
 Il presente pattern aggiunge alla comunicazione tra fruitore ed erogatore 
