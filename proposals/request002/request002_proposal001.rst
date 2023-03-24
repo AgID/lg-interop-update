@@ -71,6 +71,8 @@ l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la cost
 nello specifico utilizzando i profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità.
 
+Per assicurare dell'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
+
 - il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit);
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
@@ -78,7 +80,7 @@ Dati per l’interoperabilità.
 - l'ergatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando la chiave pubblica recuperata dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 
-Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit;
+Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit.
 
 
 .. mermaid::
@@ -131,15 +133,13 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità al client utilizzato per la richiesta;
 
-3. il fruitore posiziona il Voucher nell'header Autorization e il JWS di audit nell’header Agid-JWT-TrackingEvidence. 
+3. il fruitore posiziona il JWS di audit nell’header Agid-JWT-TrackingEvidence. 
 
 4. Il fruitore spedisce il messaggio all’erogatore.
 
 **B: Risultato**
 
-5. L'erogatore verifica il Voucher secondo le modalità indicate nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
-
-6.  L’erogatore decodifica il JWS di audit presente in Agid-JWT-TrackingEvidence header
+5.  L’erogatore decodifica il JWS di audit presente in Agid-JWT-TrackingEvidence header
     secondo le indicazioni contenute in :rfc:`7515#section-5.2`,
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel Jose Header, in particolare verifica:
@@ -149,11 +149,10 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     f. la corrispondenza tra se stesso e il claim :code:`aud`;
 
     g. l’univocità del claim :code:`jti` se presente.
+          
+6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
     
-      
-7. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
-    
-10.  Se l'azioni 6 o 7 ha avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
+7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
 Note:
 
@@ -202,5 +201,140 @@ Porzione JWS con campi protetti dalla firma
 TRUST DIRETTO FRUITORE - EROGATORE
 ----------------------------------
 
-Nei casi indicati in premessa di applicabilità del presente scenario, l'erogatore
+L'erogatore e il fruitore DEVONO definire il trust per consentire lo scambio del materiale crittografico necessario per assicurare la firma del JSW di audit.
+
+Per dare seguito all'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
+
+- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando il materiale crittografico scambiato nel trust definito (JWS di audit);
+
+- il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
+
+- l'ergatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando il materiale crittografico scambiato nel trust definito.
+
+
+Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit.
+
+
+.. mermaid::
+
+  sequenceDiagram
+
+    activate Fruitore
+	activate Erogatore
+    Fruitore->>+Erogatore: 1. Request()
+	Erogatore-->>Fruitore: 2. Response
+    deactivate Erogatore
+    deactivate Fruitore
+
+
+*Figura XX - Audit dati tracciati nel dominio del fruitore*
+
+Regole di processamento
+-----------------------
+
+La creazione ed il processamento dei JWT DEVE rispettare
+le buone prassi di sicurezza indicate in :rfc:`8725`.
+
+**A: Richiesta**
+
+1. Il fruitore predispone il JWS con i dati tracciati nel proprio dominio, ovvero:
+
+   a. il JOSE Header con almeno i parameter:
+
+      i.   alg con l’algoritmo di firma, vedi :rfc:`8725`
+
+      ii.  typ uguale a JWT
+
+      iii. una o più delle seguenti opzioni per referenziare il certificato X.509:
+      
+	   -  :code:`x5u` (X.509 URL)
+
+           -  :code:`x5c` (X.509 Certificate Chain)
+
+           -  :code:`x5t#S256` (X.509 Certificate SHA-256 Thumbprint)
+
+   b. i seguenti claim obbligatori:
+
+      iv. i riferimenti temporali di emissione e scadenza: :code:`iat` , :code:`exp`. Se
+          il flusso richiede di verificare l’istante di prima validità
+          del token, si può usare il claim :code:`nbf`.
+
+      v.  il riferimento dell’erogatore in :code:`aud`;
+	  
+	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
+	  
+	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
+
+      viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
+
+   c. il claim concordati con l'erogatore;
+
+2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando il materiale crittografico scambiato nel trust definito;
+
+3. il fruitore posiziona il JWS di audit nell’header Agid-JWT-TrackingEvidence. 
+
+4. Il fruitore spedisce il messaggio all’erogatore.
+
+**B: Risultato**
+
+5.  L’erogatore decodifica il JWS di audit presente in Agid-JWT-TrackingEvidence header
+    secondo le indicazioni contenute in :rfc:`7515#section-5.2`,
+    le buone prassi indicate in :rfc:`8725`
+    e valida i claim contenuti nel Jose Header, in particolare verifica:
+
+    e. il contenuto dei claim :code:`iat` , :code:`exp`;
+
+    f. la corrispondenza tra se stesso e il claim :code:`aud`;
+
+    g. l’univocità del claim :code:`jti` se presente.
+          
+6. l’erogatore valida la firma verificando il JWS di audit con il materiale crittografico scambiato nel trust definito;
+    
+7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
+
+Note:
+
+-  Per gli algoritmi da utilizzare in alg e Digest si vedano
+   le Linee Guida sulla sicurezza, emanate dall'Agenzia per l'Italia Digitale 
+   ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
+
+Esempio
+-------
+
+Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore.
+Richiesta HTTP con Digest e representation metadata
+
+.. code-block:: http
+
+   POST https://api.erogatore.example/rest/service/v1/hello/echo/ HTTP/1.1
+   Accept: application/json
+   Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...
+   Digest: SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=
+   Content-Type: application/json
+   
+   {"testo": "Ciao mondo"}
+
+Porzione JWS con campi protetti dalla firma
+
+.. code-block:: python
+
+   # *header*
+   {
+     "alg": "ES256",
+     "typ": "JWT",
+     "x5c": [
+        "MIICyzCCAbOgAwIBAgIEC..."
+  ]
+   }
+   # *payload*
+   
+   {
+     "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
+     "iat": 1516239022,
+     "nbf": 1516239022,
+     "exp": 1516239024,
+     "userID": "user293",
+     "userLocation": "station012"
+     "purposeId": 8342462387
+   }
 
