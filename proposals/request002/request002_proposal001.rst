@@ -49,7 +49,7 @@ Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT di 
 
 - "iss" il riferimento del fruitore o del client utilizzato per la richiesta dell'e-service;
 
-e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE ascicurare il popolamaneto del seguente claim del JWT di audit:  
+e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE assicurare il popolamaneto del seguente claim del JWT di audit:  
 
 - "purposeId" l'id della finalità registrata dal fruitore sulla Piattaforma Digitale Nazionale Dati interoperabilità in relazione alla richiesta di fruizione dell'e-service.
 
@@ -75,7 +75,7 @@ Per assicurare dell'inoltro dei dati tracciati nel dominio del fruitore all'erog
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
-- l'ergatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando la chiave pubblica recuperata dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+- l'erogatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando la chiave pubblica recuperata dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità associata alla chiave privata utilizzata dal fruitore per la firma del JWS di audit.
 
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit.
@@ -111,7 +111,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
       ii.  typ uguale a JWT
 
-      iii. kid uguale all'identificativo della chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma della request
+      iii. kid uguale all'identificativo della chiave pubblica, registrata su Piattaforma Digitale Nazionale Dati per l’interoperabilità, associata alla chiave privata utilizzata per la firma
 
    b. i seguenti claim obbligatori:
 
@@ -129,7 +129,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 	   
    c. il claim concordati con l'erogatore;
 
-2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità al client utilizzato per la richiesta;
+2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità per il client utilizzato per la richiesta;
 
 3. il fruitore posiziona il JWS di audit nell’header Agid-JWT-TrackingEvidence. 
 
@@ -146,7 +146,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
       
       ii. la corrispondenza tra se stesso e il claim :code:`aud`; 
           
- 6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
+ 6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando il JWS di audit
     
 7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
@@ -206,7 +206,7 @@ Per dare seguito all'inoltro dei dati tracciati nel dominio del fruitore all'ero
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
-- l'ergatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando il materiale crittografico scambiato nel trust definito.
+- l'erogatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando il materiale crittografico scambiato nel trust definito.
 
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit.
@@ -257,12 +257,10 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
           del token, si può usare il claim :code:`nbf`.
 
       v.  il riferimento dell’erogatore in :code:`aud`;
+    
+      vi. il riferimento del fruitore in :code:`iss`;
       
-      vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
-      
-      vii. l'id del client utilizzato dal fruitore in :code:`iss`;
-      
-      viii. identificativo del JWS in :code:`jti`;	  
+      vii. identificativo del JWS in :code:`jti`;	  
 
    c. il claim concordati con l'erogatore;
 
@@ -326,7 +324,6 @@ Porzione JWS con campi protetti dalla firma
    {
      "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
      "iss": "be54418b-fa38-4060-bf11-eac2cc1a48ca",
-     "purposeId": "4a153b51-5d47-4db9-be7e-e73dbcae4bb9",
      "iat": 1516239022,     
      "nbf": 1516239022,
      "exp": 1516239024,
