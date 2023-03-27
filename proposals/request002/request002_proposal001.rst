@@ -47,9 +47,9 @@ Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT di 
 
 - "aud" il riferimento all'e-service dell’erogatore;
 
-- "iss" il riferimento del fruitore o del client utilizzato per la richiesta dell'e-service;
-
 e, nel caso di utilizzo Piattaforma Digitale Nazionale Dati interoperabilità per la costruzione del trust, DEVE assicurare il popolamaneto del seguente claim del JWT di audit:  
+
+- "iss" il riferimento del client del fruitore utilizzato per la richiesta dell'e-service;
 
 - "purposeId" l'id della finalità registrata dal fruitore sulla Piattaforma Digitale Nazionale Dati interoperabilità in relazione alla richiesta di fruizione dell'e-service.
 
@@ -257,10 +257,8 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
           del token, si può usare il claim :code:`nbf`.
 
       v.  il riferimento dell’erogatore in :code:`aud`;
-    
-      vi. il riferimento del fruitore in :code:`iss`;
-      
-      vii. identificativo del JWS in :code:`jti`;	  
+          
+      vi. identificativo del JWS in :code:`jti`;	  
 
    c. il claim concordati con l'erogatore;
 
@@ -328,7 +326,6 @@ Porzione JWS con campi protetti dalla firma
    
    {
      "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
-     "iss": "be54418b-fa38-4060-bf11-eac2cc1a48ca",
      "iat": 1516239022,     
      "nbf": 1516239022,
      "exp": 1516239024,
