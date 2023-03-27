@@ -119,8 +119,13 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
 	  
 	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
-
-      viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
+	  
+	  viii. identificativo del JWS in :code:`jti`;	  	  
+	  
+	  ix. id della finalità registrata dal fruitore in :code:`purposeId`;
+	  
+	  x. un numero casuale costituito da 13 cifre in :code:`dnonce`;
+      
 
    c. il claim concordati con l'erogatore;
 
@@ -143,10 +148,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     e. il contenuto dei claim :code:`iat` , :code:`exp`;
 
-    f. la corrispondenza tra se stesso e il claim :code:`aud`;
-
-    g. l’univocità del claim :code:`jti` se presente.
-    
+    f. la corrispondenza tra se stesso e il claim :code:`aud`;  
       
 8.  l’erogatore verifica la corrispondenza del digest contenuto nel Voucher della Piattaforma Digitale Nazionale Dati per l'interoperabilità è il digest calcolato dal JWS di audit presente nell’header Agid-JWT-TrackingEvidence 
 
@@ -191,12 +193,14 @@ Porzione JWS con campi protetti dalla firma
    
    {
      "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
-     "iat": 1516239022,
+     "iss": "be54418b-fa38-4060-bf11-eac2cc1a48ca",
+     "purposeId": "4a153b51-5d47-4db9-be7e-e73dbcae4bb9",
+     "dnonce": 1234567890123,
+     "iat": 1516239022,     
      "nbf": 1516239022,
      "exp": 1516239024,
      "userID": "user293",
-     "userLocation": "station012"
-     "purposeId": 8342462387
+     "userLocation": "station012"   
    }
 
 
