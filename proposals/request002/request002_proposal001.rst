@@ -142,11 +142,11 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel Jose Header, in particolare verifica:
 
-      i. il contenuto dei claim :code:`iat` , :code:`exp`;
+    i. il contenuto dei claim :code:`iat` , :code:`exp`;
       
-      ii. la corrispondenza tra se stesso e il claim :code:`aud`; 
+    ii. la corrispondenza tra se stesso e il claim :code:`aud`; 
           
- 6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando il JWS di audit
+6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando il JWS di audit
     
 7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
