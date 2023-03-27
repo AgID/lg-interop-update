@@ -115,19 +115,17 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
    b. i seguenti claim obbligatori:
 
-      iv. i riferimenti temporali di emissione e scadenza: :code:`iat` , :code:`exp`. Se
-          il flusso richiede di verificare l’istante di prima validità
-          del token, si può usare il claim :code:`nbf`.
+      iv. i riferimenti temporali di emissione e scadenza: :code:`iat` , :code:`exp`. Se il flusso richiede di verificare l’istante di prima validità del token, si può usare il claim :code:`nbf`.
 
       v.  il riferimento dell’erogatore in :code:`aud`;
-	  
-	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
-	  
-	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
-
-          viii. identificativo del JWS in :code:`jti`;	  	  
-	  
-	  ix. id della finalità registrata dal fruitore in :code:`purposeId`;
+      
+      vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
+      
+      vii. l'id del client utilizzato dal fruitore in :code:`iss`;
+      
+      viii. identificativo del JWS in :code:`jti`;
+      
+      ix. id della finalità registrata dal fruitore in :code:`purposeId`;
 	   
    c. il claim concordati con l'erogatore;
 
@@ -144,12 +142,11 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     le buone prassi indicate in :rfc:`8725`
     e valida i claim contenuti nel Jose Header, in particolare verifica:
 
-    e. il contenuto dei claim :code:`iat` , :code:`exp`;
-
-    f. la corrispondenza tra se stesso e il claim :code:`aud`;
-    
+      i. il contenuto dei claim :code:`iat` , :code:`exp`;
+      
+      ii. la corrispondenza tra se stesso e il claim :code:`aud`; 
           
-6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
+ 6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
     
 7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
