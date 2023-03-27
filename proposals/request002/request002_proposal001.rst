@@ -257,12 +257,12 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
           del token, si può usare il claim :code:`nbf`.
 
       v.  il riferimento dell’erogatore in :code:`aud`;
-	  
-	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
-	  
-	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
-	  
-	  viii. identificativo del JWS in :code:`jti`;	  
+      
+      vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
+      
+      vii. l'id del client utilizzato dal fruitore in :code:`iss`;
+      
+      viii. identificativo del JWS in :code:`jti`;	  
 
    c. il claim concordati con l'erogatore;
 
