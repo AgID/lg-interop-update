@@ -279,11 +279,16 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     e. il contenuto dei claim :code:`iat` , :code:`exp`;
 
-    f. la corrispondenza tra se stesso e il claim :code:`aud`;    
-          
-6. l’erogatore valida la firma verificando il JWS di audit con il materiale crittografico scambiato nel trust definito;
+    f. la corrispondenza tra se stesso e il claim :code:`aud`;   
     
-7.  Se l'azioni 5 e 6 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
+6.  L’erogatore recupera il certificato X.509 referenziato nel JOSE
+    Header facendo attenzione alle indicazioni contenute in :rfc:`8725#section-3.10`
+
+7. L’erogatore verifica il certificato secondo i criteri del trust
+          
+8. l’erogatore valida la firma verificando il JWS di audit con il materiale crittografico scambiato nel trust definito;
+    
+9.  Se l'azioni da 5 a 8 hanno avuto esito positivo, il messaggio viene elaborato e viene restituito il risultato dell'e-service richiamato
 
 Note:
 
