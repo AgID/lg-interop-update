@@ -45,8 +45,6 @@ Esempi di claim che POSSONO essere inclusi nel JWT di audit sono:
 
 Il fruitore DEVE sempre assicurare il popolamento dei seguenti claim del JWT di audit: 
 
-- "dnonce" un numero casuale costituito da 13 cifre, al fine di aumentare l'entropia dello stesso;
-
 - "aud" il riferimento all'e-service dell’erogatore;
 
 - "iss" il riferimento del fruitore o del client utilizzato per la richiesta dell'e-service;
@@ -127,8 +125,10 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 	  
 	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
 
-      viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
-
+          viii. identificativo del JWS in :code:`jti`;	  	  
+	  
+	  ix. id della finalità registrata dal fruitore in :code:`purposeId`;
+	   
    c. il claim concordati con l'erogatore;
 
 2. il fruitore firma il token adottando la JWS Compact Serialization utilizzando la chiave privata associta alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l'interoperabilità al client utilizzato per la richiesta;
@@ -147,8 +147,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
     e. il contenuto dei claim :code:`iat` , :code:`exp`;
 
     f. la corrispondenza tra se stesso e il claim :code:`aud`;
-
-    g. l’univocità del claim :code:`jti` se presente.
+    
           
 6. l’erogatore recupera la chiave pubblica del client del fruitore dalla Piattaforma Digitale Nazionale Dati per l'interoperabilità e valida la firma verificando l’elemento Signature del JWS di audit
     
@@ -190,12 +189,13 @@ Porzione JWS con campi protetti dalla firma
    
    {
      "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
-     "iat": 1516239022,
+     "iss": "be54418b-fa38-4060-bf11-eac2cc1a48ca",
+     "purposeId": "4a153b51-5d47-4db9-be7e-e73dbcae4bb9",
+     "iat": 1516239022,     
      "nbf": 1516239022,
      "exp": 1516239024,
      "userID": "user293",
-     "userLocation": "station012"
-     "purposeId": 8342462387
+     "userLocation": "station012"     
    }
 
 TRUST DIRETTO FRUITORE - EROGATORE
@@ -264,8 +264,8 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 	  vi. l'id della finalità registrata dal fruitore su Piattaforma Digitale Nazionale Dati interoperabilità in :code:`purposeId`;
 	  
 	  vii. l'id del client utilizzato dal fruitore in :code:`iss`;
-
-      viii. identificativo del JWS, per evitare replay attack, in :code:`jti`;
+	  
+	  viii. identificativo del JWS in :code:`jti`;	  
 
    c. il claim concordati con l'erogatore;
 
@@ -284,9 +284,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
     e. il contenuto dei claim :code:`iat` , :code:`exp`;
 
-    f. la corrispondenza tra se stesso e il claim :code:`aud`;
-
-    g. l’univocità del claim :code:`jti` se presente.
+    f. la corrispondenza tra se stesso e il claim :code:`aud`;    
           
 6. l’erogatore valida la firma verificando il JWS di audit con il materiale crittografico scambiato nel trust definito;
     
@@ -330,11 +328,12 @@ Porzione JWS con campi protetti dalla firma
    
    {
      "aud": "https://api.erogatore.example/rest/service/v1/hello/echo"
-     "iat": 1516239022,
+     "iss": "be54418b-fa38-4060-bf11-eac2cc1a48ca",
+     "purposeId": "4a153b51-5d47-4db9-be7e-e73dbcae4bb9",
+     "iat": 1516239022,     
      "nbf": 1516239022,
      "exp": 1516239024,
      "userID": "user293",
      "userLocation": "station012"
-     "purposeId": 8342462387
    }
 
