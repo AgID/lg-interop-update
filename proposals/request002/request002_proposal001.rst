@@ -124,8 +124,6 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
       vii. l'id del client utilizzato dal fruitore in :code:`iss`;
       
       viii. identificativo del JWS in :code:`jti`;
-      
-      ix. id della finalità registrata dal fruitore in :code:`purposeId`;
 	   
    c. il claim concordati con l'erogatore;
 
@@ -166,8 +164,7 @@ Richiesta HTTP con Digest e representation metadata
 
    POST https://api.erogatore.example/rest/service/v1/hello/echo/ HTTP/1.1
    Accept: application/json
-   Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...
-   Digest: SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=
+   Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...   
    Content-Type: application/json
    
    {"testo": "Ciao mondo"}
@@ -198,7 +195,7 @@ Porzione JWS con campi protetti dalla firma
 TRUST DIRETTO FRUITORE - EROGATORE
 ----------------------------------
 
-L'erogatore e il fruitore DEVONO definire il trust per consentire lo scambio del materiale crittografico necessario per assicurare la firma del JSW di audit.
+L'erogatore e il fruitore DEVONO definire il trust per consentire lo scambio del materiale crittografico necessario per assicurare la firma del JWS di audit.
 
 Per dare seguito all'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
 
@@ -304,8 +301,7 @@ Richiesta HTTP con Digest e representation metadata
 
    POST https://api.erogatore.example/rest/service/v1/hello/echo/ HTTP/1.1
    Accept: application/json
-   Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...
-   Digest: SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=
+   Agid-JWT-TrackingEvidence: eyJhbGciOiJSUzI1NiIsInR5c.vz8...   
    Content-Type: application/json
    
    {"testo": "Ciao mondo"}
