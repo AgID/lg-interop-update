@@ -77,6 +77,7 @@ Per assicurare dell'inoltro dei dati tracciati nel dominio del fruitore all'erog
 
 - l'erogatore DEVE verificare la firma del JWS di audit ricevuto nell'header Agid-JWT-TrackingEvidence, utilizzando la chiave pubblica recuperata dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità associata alla chiave privata utilizzata dal fruitore per la firma del JWS di audit.
 
+In merito all'identificativo della chiave pubblica (kid) associata alla chiave privata utilizzata dal client, lo stesso è generato dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 Nell'attuazione dei precedenti passi il fruitore è responsabile della valorizzazione dei claim inclusi nel JWS di audit.
 
