@@ -30,7 +30,9 @@ Il presente profilo propone l’utilizzo di:
 
 -  JSON Web Signature (JWS) definita dall’ :rfc:`7515`.
 
-Si assume che il trust tra fruitore ed erogatore è costruito per il tramite di Piattaforma Digitale Nazionale Dati per l’interoperabilità che rende disponibile il materiale crittografico, nello specifico la/e chiave/i pubblica/he dichiarata/e dal fruitore relativamente al client da esso utilizzato per invocare l'e-service dell'erogatore.
+Si assume che il trust tra fruitore ed erogatore è costruito per il tramite di Piattaforma Digitale Nazionale Dati per l’interoperabilità che rende disponibile il materiale crittografico, nello specifico la chiave pubblica dichiarata dal fruitore relativamente al client da esso utilizzato per invocare l'e-service dell'erogatore.
+
+In merito all'identificativo della chiave pubblica (kid) associata alla chiave privata utilizzata dal client, lo stesso è generato dalla Piattaforma Digitale Nazionale Dati per l’interoperabilità.
 
 .. mermaid::
 
