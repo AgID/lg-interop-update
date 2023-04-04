@@ -158,7 +158,8 @@ Esempio
 -------
 
 Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore.
-Richiesta HTTP con Digest e representation metadata
+
+Richiesta HTTP
 
 .. code-block:: http
 
@@ -295,7 +296,8 @@ Esempio
 -------
 
 Di seguito è riportato un tracciato del messaggio inoltrato dal fruitore all’interfaccia di servizio dell’erogatore.
-Richiesta HTTP con Digest e representation metadata
+
+Richiesta HTTP
 
 .. code-block:: http
 
