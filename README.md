@@ -6,4 +6,4 @@ Il presente repo è reso disponibile per dare seguito alla concertazione per l�
 - Il folder **requests** riporta le esigenze espresse dalle Pubbliche Amministrazioni pervenute ad AgID o individuate dalla stessa.
 - Il folder **proposals** riporta le proposte di pattern di interoperabilità o profili di interoperabilità individuati per dare seguito alle esigenze di cui al precedente punto.
 
-Si invitano le Pubbliche Amministrazioni interessate ad utilizzare gli strumenti del presente repo (**Issues** or **Pull reuests**) per partecipare alla concertazione delle proposte di pattern di interoperabilità o profili di interoperabilità.
+Si invitano le Pubbliche Amministrazioni interessate ad utilizzare gli strumenti del presente repo (**Issues** or **Pull requests**) per partecipare alla concertazione delle proposte di pattern di interoperabilità o profili di interoperabilità.
