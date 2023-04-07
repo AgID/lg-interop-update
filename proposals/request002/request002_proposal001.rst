@@ -71,7 +71,7 @@ Dati per l’interoperabilità.
 
 Per assicurare dell'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
 
-- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit);
+- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit), ove non disponga di una rappresentazione opaca dei dati tracciati e firmati già predisposta nei modi indicati ancora valida nel proprio dominio;
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
@@ -151,6 +151,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 Note:
 
+-  I predenti passi 1 e 2 sono realizzati dal fruitore nella solo nel caso in cui non disponga di un digest del JWS di audit ancora valido nel proprio dominio;
 -  Per gli algoritmi da utilizzare in alg e Digest si vedano
    le Linee Guida sulla sicurezza, emanate dall'Agenzia per l'Italia Digitale 
    ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
@@ -201,7 +202,7 @@ L'erogatore e il fruitore DEVONO definire il trust per consentire lo scambio del
 
 Per dare seguito all'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
 
-- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando il materiale crittografico scambiato nel trust definito (JWS di audit);
+- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando il materiale crittografico scambiato nel trust definito (JWS di audit), ove non disponga di una rappresentazione opaca dei dati tracciati e firmati già predisposta nei modi indicati ancora valida nel proprio dominio;
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
@@ -289,6 +290,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 Note:
 
+-  I predenti passi 1 e 2 sono realizzati dal fruitore nella solo nel caso in cui non disponga di un digest del JWS di audit ancora valido nel proprio dominio;
 -  Per gli algoritmi da utilizzare in alg e Digest si vedano
    le Linee Guida sulla sicurezza, emanate dall'Agenzia per l'Italia Digitale 
    ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
