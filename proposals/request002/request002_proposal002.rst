@@ -54,7 +54,7 @@ l’interoperabilità di cui al comma 2 dell'articolo 50-ter del CAD per la cost
 nello specifico ai profili di emissione dei Voucher previsti per la Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità sono aggiunti i seguenti passi per garantire la non ripudiabilità del contenuto del JWT di audit: 
 
-- il fruitore, applicando quanto indicato nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità, DEVE predisporre la rappresentazione opaca dei dati tracciati e firmati (digest del JWS di audit) ed inserirla nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
+- il fruitore, applicando quanto indicato nelle specifiche tecniche della Piattaforma Digitale Nazionale Dati per l’interoperabilità, DEVE predisporre la rappresentazione opaca dei dati tracciati e firmati (digest del JWS di audit), o utilizzare una rappresentazione opaca dei dati tracciati e firmati ancora valida nel proprio dominio, ed inserirla nella Access Token Request alla Piattaforma Digitale Nazionale Dati per l’interoperabilità;
 
 - la Piattaforma Digitale Nazionale Dati per l’interoperabilità DEVE inserire la rappresentazione opaca dei dati tracciati(digest del JWS di audit) nell'Access Token, ovvero il Voucher rilasciato al fruitore;
 
@@ -154,6 +154,7 @@ le buone prassi di sicurezza indicate in :rfc:`8725`.
 
 Note:
 
+-  I predenti passi 1, 2 e 3 sono realizzati dal fruitore nella solo nel caso in cui non disponga di un digest del JWS di audit ancora valido nel proprio dominio;
 -  Per gli algoritmi da utilizzare in alg e Digest si vedano
    le Linee Guida sulla sicurezza, emanate dall'Agenzia per l'Italia Digitale 
    ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice dell'Amministrazione Digitale).
