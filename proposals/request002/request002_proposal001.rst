@@ -71,7 +71,7 @@ Dati per l’interoperabilità.
 
 Per assicurare dell'inoltro dei dati tracciati nel dominio del fruitore all'erogatore:
 
-- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit), ove non disponga di una rappresentazione opaca dei dati tracciati e firmati già predisposta nei modi indicati ancora valida nel proprio dominio;
+- il fruitore DEVE predisporre la rappresentazione dei dati tracciati e firmare la stessa utilizzando la chiave privata associata alla chiave pubblica registrata sulla Piattaforma Digitale Nazionale Dati per l’interoperabilità per il client utilizzato (JWS di audit);
 
 - il fruitore nella request all'erogatore deve includere nell'header Agid-JWT-TrackingEvidence la rappresentazione dei dati tracciati e firmati (JWS di audit);
 
