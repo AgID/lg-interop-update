@@ -243,7 +243,7 @@ Content-Type: text/plain
 Content-Length: 1000
 Content-Range: bytes 0-999/25000
 
-<1000 bytes of data are included in the message body>
+...1000 bytes of data are included in the message body...
 ```
 2. Response HTTP status 400 Bad Request
 
@@ -254,8 +254,8 @@ Content-Type: application/problem+json
 {
     "type": "https://apidoc.ente.example/probs/invalid-a",
     "status": 400,
-    "title": "L'attributo \`b\` ha un valore non valido.",
-    "detail": "L'attributo \`b\` dev'essere una stringa di lunghezza   inferiore a 32 caratteri."
+    "title": "L'attributo b ha un valore non valido.",
+    "detail": "L'attributo b deve essere una stringa di lunghezza  inferiore a 32 caratteri."
 }
 ```
 
