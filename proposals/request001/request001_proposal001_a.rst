@@ -22,6 +22,8 @@ solo nell'ipotesi in cui il fruitore non possa accreditarsi alla Piattaforma Dig
 Nazionale Dati per l’interoperabilità di cui al comma 2 dell'articolo 
 50-ter del CAD.
 
+Nel ricordare che l'applicazione del presente pattern PUÒ avvenire solo nel caso in cui il fruitore non possa accreditarsi alla Piattaforma Digitale Nazionale Dati per l’interoperabilità, si evidenza che entro 12 mesi dal superamento di tale impedimento l'erogatore e fruitore DEVONO aggiornare le modalità di costituzione del trust assicurando lo stesso per il tramite della Piattaforma Digitale Nazionale Dati per l’interoperabilità.
+
 Descrizione
 ^^^^^^^^^^^
 
@@ -58,7 +60,7 @@ ai sensi dell'articolo 71 del decreto legislativo 7 marzo 2005, n. 82 (Codice de
 
 1. Il fruitore costruisce un messaggio di richiesta.
 
-2. Il fruitore spedisce utilizzando il canale sicuro stabilito con il
+2. Il fruitore, utilizzando il canale sicuro stabilito, spedisce il
    messaggio di richiesta all’interfaccia di servizio dell’erogatore.
 
 **B: Risposta**
