@@ -1,9 +1,11 @@
 
 **state**: inWorking
 
-Aggiunta al Documento Operativo "Pattern di Interazione"
+# Documento Operativo "Pattern di interazione"
 
-# Capitolo 7 - Richiesta Risorse Massive
+Si propone di aggiugere quanto segue.
+
+## Capitolo 7 - Richiesta Risorse Massive
 
 Lo sviluppo di una interfaccia per la richiesta di risorse massive è auspicabile nei casi in cui:
 - Il numero di risorse richieste è elevato le stesse possono essere aggregate in un'unica risposta.
