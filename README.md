@@ -1,8 +1,6 @@
 
 # Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni 
 
-*Il presente branch è utilizzato come template per la creazione di un branch per il 1° ciclo di un anno*
-
 ### Anno 2023 - 1° Ciclo di mantenimento Documenti Operativi
 
 Nel **folder requests** sono riportate le **esigenze** pervenute dal **1° gennaio 2023** al **30 giugno 2023**. 
