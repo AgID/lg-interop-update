@@ -1,6 +1,7 @@
+
 # Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni 
 
-*Il presente branch è utilizzato come template per la creazione di un branch per un  ciclo*
+*Il presente branch è utilizzato come template per la creazione di un branch per il 1° ciclo di un anno*
 
 ### Anno \<cur_year> - 1° Ciclo di mantenimento Documenti Operativi
 
