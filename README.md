@@ -7,6 +7,6 @@ Nel **folder requests** sono riportate le **esigenze** pervenute dal **1° genna
 
 Ogni **esigenza** è contenuta in un file relativo con un suffisso progressivo “**requestXXX**”.
 
-Nel **folder proposals**  sono riportate le **proposte iniziali**  e quelle pervenute dal **1° maggio 2023** al  **30 agosto 2023**.
+Nel **folder proposals**  sono riportate le **proposte iniziali**  e quelle pervenute dal **1° maggio 2023** al  **31 agosto 2023**.
 
 Le **proposte** relative ciascuna **esigenza** sono riportare in un **subfolder** **corrispondende** al file che descrive l’**esigenza in “requests”** (folder “**requestXXX**”).
